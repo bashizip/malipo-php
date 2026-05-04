@@ -1,1 +1,0 @@
-{"version":1,"defects":[],"times":{"Malipo\\Tests\\MalipoTest::test_create_charge":0.02,"Malipo\\Tests\\MalipoTest::test_retrieve_transaction":0,"Malipo\\Tests\\MalipoTest::test_error_handling":0.004,"Malipo\\Tests\\MalipoTest::test_webhook_verification":0,"Malipo\\Tests\\MalipoTest::test_webhook_verification_failure":0}}
