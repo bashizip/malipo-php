@@ -20,6 +20,6 @@ class Charges
             $headers['Idempotency-Key'] = $options['idempotencyKey'];
         }
 
-        return $this->client->request('POST', '/charge', $params, $headers);
+        return $this->client->request('POST', 'charge', $params, $headers);
     }
 }

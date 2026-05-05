@@ -29,7 +29,7 @@ class Malipo
 
         $this->apiKey = $apiKey;
         $this->environment = $environment ?: ($this->isLiveKey($apiKey) ? 'live' : 'sandbox');
-        $this->baseUrl = $baseUrl ?: 'https://lcwadpidhwptpzriqnjd.supabase.co/functions/v1';
+        $this->baseUrl = $baseUrl ?: 'https://lcwadpidhwptpzriqnjd.supabase.co/functions/v1/';
 
         $this->client = new Client([
             'base_uri' => $this->baseUrl,
@@ -75,8 +75,13 @@ class Malipo
 
         } catch (GuzzleException $e) {
             $response = $e->getResponse();
-            $data = $response ? json_decode($response->getBody()->getContents(), true) : [];
+            $contents = $response ? $response->getBody()->getContents() : '{}';
+            $data = json_decode($contents, true) ?: [];
+            
             $error = $data['error'] ?? [];
+            if (!is_array($error)) {
+                $error = ['message' => (string)$error];
+            }
 
             throw new MalipoException(
                 $error['message'] ?? $e->getMessage(),

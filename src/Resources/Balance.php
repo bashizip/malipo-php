@@ -15,7 +15,7 @@ class Balance
 
     public function retrieve()
     {
-        $endpoint = $this->client->getEnvironment() === 'live' ? '/live-balance' : '/sandbox-balance';
+        $endpoint = $this->client->getEnvironment() === 'live' ? 'live-balance' : 'sandbox-balance';
         return $this->client->request('GET', $endpoint);
     }
 }

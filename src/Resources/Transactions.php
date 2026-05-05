@@ -15,6 +15,6 @@ class Transactions
 
     public function retrieve(string $id)
     {
-        return $this->client->request('GET', '/transaction-status', ['id' => $id]);
+        return $this->client->request('GET', 'transaction-status', ['id' => $id]);
     }
 }
