@@ -21,6 +21,7 @@ class MalipoTest extends TestCase
         // Use reflection to set the private Guzzle client with the mock handler
         $reflection = new \ReflectionClass($client);
         $property = $reflection->getProperty('client');
+        $property->setAccessible(true);
 
         $guzzleClient = new \GuzzleHttp\Client(['handler' => $handlerStack]);
         $property->setValue($client, $guzzleClient);
